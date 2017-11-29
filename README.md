@@ -1,8 +1,8 @@
-# GoDSC
+# godice
 
 Go version of the
-[Dice Simalarity Coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient)
-(DSC). It can be used to compare two strings or return the best match out of an array of strings.
+[Sørensen–Dice coefficient.](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient).
+It can be used to compare two strings or return the best match out of an array of strings.
 
 **Note:** The code is part of my exercises in learning Go.
 
