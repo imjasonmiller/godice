@@ -14,6 +14,7 @@ go get github.com/imjasonmiller/godsc
 
 ## Usage
 
+#### compareString
 Compare a string to one other string and return the score
 
 ```go
@@ -28,7 +29,7 @@ func main() {
   godice.CompareString("gopher", "golang")
 }
 ```
-
+#### compareStrings
 Variadic function and can take many strings. Given strings are sorted by their score.
 
 ```go
