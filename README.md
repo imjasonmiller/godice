@@ -1,7 +1,7 @@
 # godice
 
 Go version of the
-[Sørensen–Dice coefficient.](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient).
+[Sørensen–Dice coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient).
 It can be used to compare two strings or return the best match out of an array of strings.
 
 **Note:** The code is part of my exercises in learning Go.

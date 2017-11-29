@@ -1,4 +1,4 @@
-package godsc
+package godice
 
 import (
 	"sort"
