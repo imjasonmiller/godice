@@ -14,35 +14,33 @@ go get github.com/imjasonmiller/godsc
 
 ## Usage
 
-Compare two strings and return a score as float64
+Compare a string to one other string and return the score
 
 ```go
 package main
 
 import (
-  "github.com/imjasonmiller/godsc"
+  "github.com/imjasonmiller/godice"
   "log"
 )
 
 func main() {
-  godsc.CompareTwoStrings("gopher", "golang")
+  godice.CompareString("gopher", "golang")
 }
 ```
 
-Find and sort the highest scoring matches out of array of strings score
+Variadic function and can take many strings. Given strings are sorted by their score.
 
 ```go
 package main
 
 import (
-  "github.com/imjasonmiller/godsc"
+  "github.com/imjasonmiller/godice"
   "log"
 )
 
 func main() {
-  matches := godsc.FindBestMatch("golang", [5]string{
-    "gopher", "gecko", "giraffe", "grizzly", "great dane",
-  })
+  matches := godice.CompareStrings("golang", "gopher", "gecko", "giraffe", "grizzly", "great dane" })
 
   // gopher has a score of 0.2
   log.Println(matches.BestMatch.text, "has a score of", matches.BestMatch.Score)

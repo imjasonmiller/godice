@@ -37,8 +37,8 @@ func bigramsForWords(str string) map[Bigram]bool {
 	return bigrams
 }
 
-// CompareTwoStrings returns the score of two strings
-func CompareTwoStrings(strA, strB string) float64 {
+// CompareString returns the score of two strings
+func CompareString(strA, strB string) float64 {
 	// Return if strings are identical
 	if strA == strB {
 		return 1.0
@@ -79,15 +79,14 @@ type Matches struct {
 	BestMatch  Match
 }
 
-// FindBestMatch returns a struct with a slice of Candidates of type Match
-// It also contains a single BestMatch of type Match
-func FindBestMatch(str string, candidates []string) Matches {
+// CompareStrings handles multiple strings
+func CompareStrings(str string, candidates ...string) Matches {
 	scores := []Match{}
 
 	for _, candidate := range candidates {
 		scores = append(scores, Match{
 			candidate,
-			CompareTwoStrings(str, candidate),
+			CompareString(str, candidate),
 		})
 	}
 
