@@ -2,51 +2,43 @@
 
 Go version of the
 [Sørensen–Dice coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient).
-It can be used to compare two strings or return the best match out of an array of strings.
+It can be used to compare two strings or return the best match in a slice of strings.
 
-**Note:** The code is part of my exercises in learning Go.
+**Note:** The code was part of an exercise in learning Go. Pull requests are welcome.
 
-## Installation
+## Install
 
 ```shell
-go get github.com/imjasonmiller/godsc
+go get github.com/imjasonmiller/godice
 ```
 
 ## Usage
 
-#### compareString
-Compare a string to one other string and return the score
+#### godice.compareString(a, b str) float64
+Compare string `a` to string `b` and return the score.
 
 ```go
-package main
-
-import (
-  "github.com/imjasonmiller/godice"
-  "log"
-)
-
-func main() {
-  godice.CompareString("gopher", "golang")
-}
+godice.CompareString("gopher", "golang") 
 ```
-#### compareStrings
-Variadic function and can take many strings. Given strings are sorted by their score.
+
+The above would return `0.2`.
+
+#### godice.compareStrings(a str, b []str) Matches
+Compare string `a` to a `slice` of strings. Strings are sorted by their score.
 
 ```go
-package main
+godice.CompareStrings("golang", []string{"gopher", "gerbil", "giraffe"})
+```
 
-import (
-  "github.com/imjasonmiller/godice"
-  "log"
-)
+The above would return:
 
-func main() {
-  matches := godice.CompareStrings("golang", "gopher", "gecko", "giraffe", "grizzly", "great dane" })
-
-  // gopher has a score of 0.2
-  log.Println(matches.BestMatch.text, "has a score of", matches.BestMatch.Score)
-
-  // [ Match{ gecko, 0.0 }, ... ]
-  log.Println(matches.Candidates)
+```go
+Matches{
+  BestMatch:{ Text: "gopher", Score: 0.2 },
+  Candidates:[
+    { Text: "gopher", Score: 0.2 },
+    { Text: "gerbil", Score: 0 },
+    { Text: "grison", Score: 0 },
+  ],
 }
 ```
