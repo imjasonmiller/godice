@@ -1,6 +1,7 @@
 package godice
 
 import (
+	"errors"
 	"sort"
 	"strings"
 )
@@ -81,8 +82,12 @@ type Matches struct {
 }
 
 // CompareStrings handles multiple strings
-func CompareStrings(str string, candidates []string) Matches {
+func CompareStrings(str string, candidates []string) (Matches, error) {
 	scores := []Match{}
+
+	if len(candidates) < 1 {
+		return Matches{}, errors.New("slice must contain at least one element")
+	}
 
 	for _, candidate := range candidates {
 		scores = append(scores, Match{
@@ -98,5 +103,5 @@ func CompareStrings(str string, candidates []string) Matches {
 	return Matches{
 		BestMatch:  scores[0],
 		Candidates: scores,
-	}
+	}, nil
 }
