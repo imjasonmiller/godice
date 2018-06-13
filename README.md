@@ -37,8 +37,8 @@ Matches{
   BestMatch:{ Text: "gopher", Score: 0.2 },
   Candidates:[
     { Text: "gopher", Score: 0.2 },
-    { Text: "gerbil", Score: 0 },
-    { Text: "grison", Score: 0 },
+    { Text: "gerbil", Score: 0.0 },
+    { Text: "grison", Score: 0.0 },
   ],
 }
 ```
