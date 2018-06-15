@@ -40,13 +40,8 @@ func bigramsForWords(str string) map[Bigram]bool {
 
 // CompareString returns the score of two strings
 func CompareString(strA, strB string) float64 {
-	// Return if strings have no length.
-	if len(strA) == 0 && len(strB) == 0 {
-		return 0.0
-	}
-
-	// Return if strings only have 1 char.
-	if len(strA) == 1 && len(strB) == 1 {
+	// Return if either string has no length.
+	if len(strA) == 0 || len(strB) == 0 {
 		return 0.0
 	}
 
@@ -55,12 +50,13 @@ func CompareString(strA, strB string) float64 {
 		return 1.0
 	}
 
-	bigramsA, bigramsB := bigramsForWords(strA), bigramsForWords(strB)
+	bigramsA := bigramsForWords(strings.ToLower(strA))
+	bigramsB := bigramsForWords(strings.ToLower(strB))
 
 	var intersection float64
 
+	// Find bigram of A in bigrams of B.
 	for bigramA := range bigramsA {
-		// Find bigram of A in bigrams of B
 		if bigramsB[bigramA] {
 			intersection++
 		}
@@ -86,13 +82,13 @@ func CompareStrings(str string, candidates []string) (Matches, error) {
 	scores := []Match{}
 
 	if len(candidates) < 1 {
-		return Matches{}, errors.New("slice must contain at least one element")
+		return Matches{}, errors.New("slice for CompareStrings must contain at least one element")
 	}
 
 	for _, candidate := range candidates {
 		scores = append(scores, Match{
-			candidate,
-			CompareString(str, candidate),
+			Text:  candidate,
+			Score: CompareString(str, candidate),
 		})
 	}
 

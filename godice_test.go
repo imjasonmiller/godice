@@ -8,8 +8,9 @@ import (
 func TestCompareString(t *testing.T) {
 	tests := map[struct{ strA, strB string }]float64{
 		{"George Orwell", "George Orwell"}: 1.0,
+		{"Carl Sagan", "cArL sAgAn"}:       1.0,
 		{"Aldous Huxley", "Isaac Asimov"}:  0.0,
-		{"A", "A"}:                         0.0,
+		{"A", "A"}:                         1.0,
 		{"", ""}:                           0.0,
 	}
 
