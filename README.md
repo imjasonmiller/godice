@@ -23,11 +23,13 @@ godice.CompareString("gopher", "golang")
 
 The above would return `0.2`.
 
+Strings are converted to lowercase 
+
 #### godice.compareStrings(a str, b []str) Matches
 Compare string `a` to a `slice` of strings. Strings are sorted by their score.
 
 ```go
-godice.CompareStrings("golang", []string{"gopher", "gerbil", "giraffe"})
+godice.CompareStrings("golang", []string{"gopher", "gerbil", "grison"})
 ```
 
 The above would return:
